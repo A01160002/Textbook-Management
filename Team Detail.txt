@@ -1,0 +1,3 @@
+    Name of the team£ºF4;
+    Name of the GitHub project: Textbook Management;
+    GitHub username of the GitHub repository: Textbook Management;
