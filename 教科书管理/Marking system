@@ -1,0 +1,95 @@
+using System.Text;
+using System.Threading.Tasks;
+
+namespace 
+{
+    public class SS
+    {
+
+        //StudentID
+        public int StudentId { get; set; }
+        //Student name
+        public string StudentName { get; set; }
+        //Course name
+        public string Coursename { get; set; }
+        //Score
+        public int Score{ get; set; }
+        //Teacher assess
+        public string Assess { get; set; }
+
+    }
+}
+
+ //Methods of marking
+       public void Judge(SS ss,String assess,int score)
+        {
+            ss.Assess = assess;
+             ss.core = score;
+        }
+    }
+ }
+ 
+ 
+ 
+ 
+ //Teacher grading form
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace teacher marking system
+{
+    public partial class FrmJudge : Form
+    {
+        //Save an instance of the parent form
+        public FrmShow myParent;
+        //  Student object to be evaluated
+        private SS ss;
+
+        //Parameters: instance of the parent form, location of the graded student in the student array
+        public FrmJudge(FrmShow fparent,int index)
+        {
+            InitializeComponent();
+            this.myParent = fparent;
+            this.ss = myParent.engineer[index];
+        }
+        private void FrmJudge_Load(object sender, EventArgs e)
+        {
+            //Forms load to display information such as names and scores of students to be evaluated
+            this.txtName.Text = ss.Name;
+            this.txtCoursename.Text = ss.Coursename;
+            this.txtPingJia.Text = ss.Assess;
+            this.txtPingFen.Text = ss.core.ToString();
+
+        }
+        //Click the score button to respond to the event
+        private void btnPingFen_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                PM pm = new PM();
+                pm.Judge(ss,this.txtPingJia.Text.Trim(),Int32.Parse(this.txtPingFen.Text.Trim()));
+                //Refresh the main form
+                this.myParent.UpdateView();
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                TeacherBox.Show("Score failure!"+ex.ToString());
+            }
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        
+    }
+}
