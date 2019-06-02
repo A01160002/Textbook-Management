@@ -20,6 +20,24 @@ namespace
     }
 }
 
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Teacher grading system
+{
+    class PM
+    {
+        //TeacherID
+        public int TId { get; set; }
+      
+        //Teachername
+        public string TName { get; set; }
+      
+
+
  //Methods of marking
        public void Judge(SS ss,String assess,int score)
         {
@@ -73,7 +91,7 @@ namespace teacher marking system
         {
             try
             {
-                PM pm = new PM();
+                TE  te = new te();
                 pm.Judge(ss,this.txtPingJia.Text.Trim(),Int32.Parse(this.txtPingFen.Text.Trim()));
                 //Refresh the main form
                 this.myParent.UpdateView();
